@@ -3,30 +3,179 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingVertical="@dimen/screen_padding_vertical"
+    android:paddingHorizontal="@dimen/screen_padding_horizontal">
 
-    <TextView
-        android:id="@+id/txtTitle"
-        android:layout_width="wrap_content"
+<!--    <TextView-->
+<!--        android:id="@+id/txtTitle"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Home Screen"-->
+<!--        android:textSize="28sp"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"/>-->
+
+<!--    <Button-->
+<!--        android:id="@+id/btnMore"-->
+<!--        android:layout_width="187dp"-->
+<!--        android:layout_height="204dp"-->
+<!--        android:layout_margin="16dp"-->
+<!--        android:layout_marginTop="184dp"-->
+<!--        android:layout_marginEnd="132dp"-->
+<!--        android:text="More"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+
+    <!-- Logo -->
+    <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="@dimen/logo_size"
+        android:layout_height="@dimen/logo_size"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/ic_launcher"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <!-- QR Code -->
+    <ImageView
+        android:id="@+id/imgQR"
+        android:layout_width="@dimen/qr_size"
+        android:layout_height="@dimen/qr_size"
+        android:src="@drawable/qr_code"
+
+        app:layout_constraintTop_toTopOf="@id/imgLogo"
+        app:layout_constraintBottom_toBottomOf="@id/imgLogo"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Company Title -->
+    <LinearLayout
+        android:id="@+id/titleLayout"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Home Screen"
-        android:textSize="28sp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="#F5F5F5"
+        android:paddingVertical="@dimen/title_padding_vertical"
+        android:layout_marginTop="@dimen/title_margin_top"
+
+        app:layout_constraintTop_toBottomOf="@id/imgLogo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/txtCompany"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UCBPLC"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:textSize="@dimen/company_text_size"/>
+
+        <TextView
+            android:id="@+id/txtSubTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="INTERNAL TEST"
+            android:textColor="#777777"
+            android:textSize="@dimen/subtitle_text_size"
+            android:layout_marginStart="@dimen/title_gap"/>
+
+    </LinearLayout>
+
+    <!-- Slider -->
+    <!--    <androidx.viewpager2.widget.ViewPager2-->
+    <!--        android:id="@+id/viewPagerSlider"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        android:layout_marginTop="@dimen/slider_margin_top"-->
+
+    <!--        app:layout_constraintDimensionRatio="16:9"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/titleLayout"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"/>-->
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPagerSlider"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/slider_height"
+        android:layout_marginTop="@dimen/slider_margin_top"
+
+        app:layout_constraintTop_toBottomOf="@id/titleLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Sale Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardSale"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/sale_card_height"
+        android:layout_marginTop="@dimen/card_margin_top"
+
+        app:layout_constraintTop_toBottomOf="@id/viewPagerSlider"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:cardBackgroundColor="@android:color/white"
+        app:strokeColor="@color/ucb_red"
+        app:strokeWidth="2dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="3dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/card_padding">
+
+            <TextView
+                android:id="@+id/txtSale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SALE"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:textSize="@dimen/sale_title_size"/>
+
+            <TextView
+                android:id="@+id/txtPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtSale"
+                android:text="TK 0.00"
+                android:textColor="#000000"
+                android:textSize="@dimen/price_text_size"/>
+
+            <ImageView
+                android:layout_width="@dimen/arrow_size"
+                android:layout_height="@dimen/arrow_size"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/arrow"/>
+
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Home Menu -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvHomeMenu"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/menu_margin_top"
+        android:overScrollMode="never"
+
+        app:layout_constraintTop_toBottomOf="@id/cardSale"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <Button
-        android:id="@+id/btnMore"
-        android:layout_width="187dp"
-        android:layout_height="204dp"
-        android:layout_margin="16dp"
-        android:layout_marginTop="184dp"
-        android:layout_marginEnd="132dp"
-        android:text="More"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
